@@ -13,15 +13,5 @@ const myFunction = function(box){
     turn = 0;
     boxes[`${box}`] = "2"
   }
-  console.log(boxes[`${box}`]);
-  if (boxes.a === boxes.b && boxes.a === boxes.c){
-      if (boxes["a"] === "1"){
-        console.log("Player X is winner.")
-      } 
-      if (boxes["b"] === "2"){
-        console.log("Player O is winner.")
-      }
-
-  }
 }
 
