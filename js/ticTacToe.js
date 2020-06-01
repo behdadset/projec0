@@ -39,6 +39,7 @@ const winner = function(win){
     Object.keys(flag).forEach(function(key){ flag[key] = false });
   } 
   if (win === "2"){
+    $(".finish").text("Player O is winner.");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
   }
 }
