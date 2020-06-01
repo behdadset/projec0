@@ -1,0 +1,62 @@
+
+.borders{
+    display: block;
+    margin: auto;
+    width: 50%;
+    
+}
+.one{
+    position: absolute;
+    top: 8%;
+    right: 60%;
+     
+    size: 100%;
+}
+.two{
+    position: absolute;
+    top: 8%;
+    right: 45%;
+    width: 200px;  
+}
+.three{
+    position: absolute;
+    top: 8%;
+    right: 30%;
+    width: 200px;  
+}
+.four{
+    position: absolute;
+    top: 34%;
+    right: 60%;
+    width: 200px;  
+}
+.five{
+    position: absolute;
+    top: 34%;
+    right: 45%;
+    width: 200px;  
+}
+.six{
+    position: absolute;
+    top: 34%;
+    right: 30%;
+    width: 200px;  
+}
+.seven{
+    position: absolute;
+    top: 60%;
+    right: 60%;
+    width: 200px;  
+}
+.eight{
+    position: absolute;
+    top: 60%;
+    right: 45%;
+    width: 200px;  
+}
+.nine{
+    position: absolute;
+    top: 60%;
+    right: 30%;
+    width: 200px;  
+}
