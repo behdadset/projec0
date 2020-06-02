@@ -2,15 +2,18 @@ let boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
 let counterDraw = 0;
 let turn = 0;
 let flag = {a:true, b:true, c:true, d:true, e:true, f:true, g:true, h:true, i:true};
+let x = 0;
+let o = 0;
 
 const myFunction = function(box){
   if (flag[`${box}`]){
     if (turn === 0){
-      $(`.${box}`).attr('id', 'x');
+      $(`.${box}`).css('background-image', 'url("images/x2.png")');
       turn = 1;
       boxes[`${box}`] = "1"
+
     } else {
-      $(`.${box}`).attr('id', 'o');
+      $(`.${box}`).css('background-image', 'url("images/o2.png")');
       turn = 0;
       boxes[`${box}`] = "2"
     }
@@ -31,7 +34,10 @@ const myFunction = function(box){
     } else {
       counterDraw++;
       if(counterDraw === 9 ){
-        $(".finish").text("DRAW.");
+        $(".finish").text("DRAW!");
+        $(".finish").css("fontSize", "60px");
+        $(".restart").css("width", "10%");
+        $(".restart").css("margin", "50px auto");
       }
       
     }
@@ -42,10 +48,35 @@ const myFunction = function(box){
 const winner = function(win){
   if (win === "1"){
     $(".finish").text("Player X is the winner.");
+    $(".finish").css("fontSize", "60px");
+    $(".restart").css("width", "10%");
+    $(".restart").css("margin", "50px auto");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
+    x++;
+    $(".playerX").text(`Player X = ${x}`);
+    
   } 
   if (win === "2"){
     $(".finish").text("Player O is the winner.");
+    $(".finish").css("fontSize", "60px");
+    $(".restart").css("width", "10%");
+    $(".restart").css("margin", "50px auto");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
+    o++;
+    $(".playerO").text(`Player O = ${o}`);
   }
 }
+
+const reset = function(){
+  Object.keys(flag).forEach(function(key){ flag[key] = true });
+  $(".restart").css("width", "0%");
+  $(".restart").css("margin", "300px auto");
+  $(".finish").text("");
+  $(".finish").css("fontSize", "2px");
+  $(".box").css('background-image', 'url()');
+  boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
+  counterDraw = 0;
+  turn = 0;
+}
+
+$(".restart").click(reset);

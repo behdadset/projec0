@@ -4,10 +4,27 @@ body {
   }
 
 .headerImage{
-    display: block;
+    position: absolute;
     width: 200px;
+    margin: -50px 45%;
+}
+
+.playerX{
+    display: absolute;
+    margin-top: 0;
     padding-top: 50px;
-    margin: auto; 
+    margin-left: 20%;
+    color: white;
+    text-shadow: 1px 1px lightgray;
+}
+
+.playerO{
+    display: absolute;
+    margin-top: -100px;
+    padding-top: 50px;
+    margin-left: 70%;
+    color: white;
+    text-shadow: 1px 1px lightgray;
 }
   
 .wrapper {
@@ -23,6 +40,8 @@ body {
 
 .box {
     background-color: lightgray;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,15 +50,19 @@ body {
     border-radius: 5px;
 }
 
-h1{
+.finish{
     font-family: 'Chelsea Market';
-    padding: 50px;
+    margin-top: -500px;
     text-align: center;
-    color: aliceblue;
+    color: white;
+    text-shadow: 4px 4px black;
+    font-size: 2px;
+    transition: font-size 1s;
+    display: absolute;
 }
 
 #o{
-    background-image: url("../images/donut.png");
+    background-image: url("../images/donut1.png");
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
@@ -68,4 +91,12 @@ nav{
     box-shadow: 0 80px 60px 0px black;
     border-radius: 0 0 10px 10px;
     height: 850px;
+}
+
+.restart{
+    display: block;
+    margin: 300px auto;
+    width: 0%;
+    image-resolution: 30%;
+    transition: all 1s;
 }
