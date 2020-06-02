@@ -6,7 +6,7 @@ body {
 .headerImage{
     position: absolute;
     width: 200px;
-    margin: -50px 45%;
+    margin: -50px 43%;
 }
 
 .playerX{
@@ -59,20 +59,6 @@ body {
     font-size: 2px;
     transition: font-size 1s;
     display: absolute;
-}
-
-#o{
-    background-image: url("../images/donut1.png");
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#x{
-    background-image: url("../images/x2.png");
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 nav{

@@ -13,7 +13,7 @@ const myFunction = function(box){
       boxes[`${box}`] = "1"
 
     } else {
-      $(`.${box}`).css('background-image', 'url("images/o2.png")');
+      $(`.${box}`).css('background-image', 'url("images/donut.png")');
       turn = 0;
       boxes[`${box}`] = "2"
     }
