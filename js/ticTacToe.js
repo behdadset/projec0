@@ -1,8 +1,8 @@
-
 let boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
-
+let counterDraw = 0;
 let turn = 0;
 let flag = {a:true, b:true, c:true, d:true, e:true, f:true, g:true, h:true, i:true};
+
 const myFunction = function(box){
   if (flag[`${box}`]){
     if (turn === 0){
@@ -28,6 +28,12 @@ const myFunction = function(box){
       winner (boxes["g"]);
     } else if (boxes.c === boxes.f && boxes.c === boxes.i){
       winner (boxes["c"]);
+    } else {
+      counterDraw++;
+      if(counterDraw === 9 ){
+        $(".finish").text("DRAW.");
+      }
+      
     }
     flag[`${box}`] = false;
   }
@@ -35,11 +41,11 @@ const myFunction = function(box){
 
 const winner = function(win){
   if (win === "1"){
-    $(".finish").text("Player X is winner.");
+    $(".finish").text("Player X is the winner.");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
   } 
   if (win === "2"){
-    $(".finish").text("Player O is winner.");
+    $(".finish").text("Player O is the winner.");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
   }
 }

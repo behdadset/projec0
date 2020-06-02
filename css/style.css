@@ -1,14 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap");
 body {
-    margin: 40px;
+    margin: 0px;
   }
+
+.headerImage{
+    display: block;
+    width: 200px;
+    padding-top: 50px;
+    margin: auto; 
+}
   
 .wrapper {
     display: inline-grid;
     grid-template-rows: 200px 200px 200px;
     grid-template-columns: 200px 200px 200px;
     grid-gap: 3px;
-    margin-left: 30%;
+    margin-left: 20%;
+    margin-top: 50px;
+    box-shadow: 0 80px 60px 0px black;
+    border-radius: 5px;
 }
 
 .box {
@@ -18,24 +28,44 @@ body {
     align-items: center;
     border: 2px solid black;
     font-size: 3em;
+    border-radius: 5px;
 }
 
 h1{
     font-family: 'Chelsea Market';
     padding: 50px;
     text-align: center;
+    color: aliceblue;
 }
 
 #o{
-    background-image: url("../images/o.png");
+    background-image: url("../images/donut.png");
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 #x{
-    background-image: url("../images/x.png");
+    background-image: url("../images/x2.png");
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+nav{
+    color: white;
+	background-color: black;
+    height: 150px;
+    
+}
+
+.container{
+    width: 950px;
+    margin: 0 auto;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 80px 60px 0px black;
+    border-radius: 0 0 10px 10px;
+    height: 850px;
 }
