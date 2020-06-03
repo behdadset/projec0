@@ -2,16 +2,14 @@ let boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
 let counterDraw = 0;
 let turn = 0;
 let flag = {a:true, b:true, c:true, d:true, e:true, f:true, g:true, h:true, i:true};
-let x = 0;
-let o = 0;
+let x = localStorage.getItem("x");
+let o = localStorage.getItem("o");
 let xBack ="images/x1.png"
 let oBack = "images/o1.png"
-if (localStorage.getItem("x") != "null"){
-   x = localStorage.getItem("x");
+if ( x != "null"){
    $(".playerX").text(`Player X = ${x}`);
 }
-if (localStorage.getItem("o") != "null"){
-  o = localStorage.getItem("o");
+if ( o != "null"){
   $(".playerO").text(`Player O = ${o}`);
 }
 
