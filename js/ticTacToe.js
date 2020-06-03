@@ -6,11 +6,11 @@ let x = 0;
 let o = 0;
 let xBack ="images/x1.png"
 let oBack = "images/o1.png"
-if (localStorage.getItem("x") != "undefined"){
+if (localStorage.getItem("x") != "null"){
    x = localStorage.getItem("x");
    $(".playerX").text(`Player X = ${x}`);
 }
-if (localStorage.getItem("o") != "undefined"){
+if (localStorage.getItem("o") != "null"){
   o = localStorage.getItem("o");
   $(".playerO").text(`Player O = ${o}`);
 }
