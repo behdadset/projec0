@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap");
 body {
+    font-family: 'Chelsea Market';
     margin: 0px;
   }
 
@@ -7,6 +8,12 @@ body {
     position: absolute;
     width: 200px;
     margin: -50px 43%;
+}
+
+.mainImage{
+    position: absolute;
+    width: 580px;
+    margin: 10px 14%;
 }
 
 .playerX{
@@ -18,6 +25,23 @@ body {
     text-shadow: 1px 1px lightgray;
 }
 
+.playerXmain{
+    display: absolute;
+    margin-top: 0;
+    padding-top: 250px;
+    margin-left: 100px;
+    color: white;
+    text-shadow: 1px 1px lightgray;
+}
+
+.avatarX{
+    display: inline-grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px ;
+    grid-gap: 3px;
+    margin-left: 120px;
+}
+
 .playerO{
     display: absolute;
     margin-top: -100px;
@@ -25,6 +49,31 @@ body {
     margin-left: 70%;
     color: white;
     text-shadow: 1px 1px lightgray;
+}
+
+.playerOmain{
+    display: absolute;
+    margin-top: -550px;
+    padding-top: 50px;
+    margin-left: 70%;
+    color: white;
+    text-shadow: 1px 1px lightgray;
+}
+
+.avatarO{
+    display: inline-grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px ;
+    grid-gap: 3px;
+    margin-left: 780px;
+}
+
+.start{
+    display: absolute;
+    margin-top: -550px;
+    
+    margin-left: 40%;
+    width: 20%;
 }
   
 .wrapper {
@@ -42,6 +91,7 @@ body {
     background-color: lightgray;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +101,7 @@ body {
 }
 
 .finish{
-    font-family: 'Chelsea Market';
+    
     margin-top: -500px;
     text-align: center;
     color: white;
@@ -69,7 +119,7 @@ nav{
 }
 
 .container{
-    width: 950px;
+    width: 1080px;
     margin: 0 auto;
     background-image: url(../images/background.jpg);
     background-repeat: no-repeat;
@@ -81,8 +131,32 @@ nav{
 
 .restart{
     display: block;
-    margin: 300px auto;
+    margin: 50px auto;
     width: 0%;
-    image-resolution: 30%;
     transition: all 1s;
+}
+
+.x1{
+    background-image: url(../images/x.png);
+    
+}
+
+.x2{
+    background-image: url(../images/x2.png);
+}
+
+.x3{
+    background-image: url(../images/xMen.png);
+}
+
+.o1{
+    background-image: url(../images/o.png);
+}
+
+.o2{
+    background-image: url(../images/o2.png);
+}
+
+.o3{
+    background-image: url(../images/donut.png);
 }

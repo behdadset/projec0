@@ -10,12 +10,12 @@ const myFunction = function(box){
     if (turn === 0){
       $(`.${box}`).css('background-image', 'url("images/x2.png")');
       turn = 1;
-      boxes[`${box}`] = "1"
+      boxes[`${box}`] = "1";
 
     } else {
       $(`.${box}`).css('background-image', 'url("images/donut.png")');
       turn = 0;
-      boxes[`${box}`] = "2"
+      boxes[`${box}`] = "2";
     }
     if (boxes.a === boxes.b && boxes.a === boxes.c ||
       boxes.a === boxes.d && boxes.a === boxes.g 
@@ -37,7 +37,7 @@ const myFunction = function(box){
         $(".finish").text("DRAW!");
         $(".finish").css("fontSize", "60px");
         $(".restart").css("width", "10%");
-        $(".restart").css("margin", "50px auto");
+        
       }
       
     }
@@ -50,7 +50,7 @@ const winner = function(win){
     $(".finish").text("Player X is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
-    $(".restart").css("margin", "50px auto");
+    
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     x++;
     $(".playerX").text(`Player X = ${x}`);
@@ -60,7 +60,7 @@ const winner = function(win){
     $(".finish").text("Player O is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
-    $(".restart").css("margin", "50px auto");
+    
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     o++;
     $(".playerO").text(`Player O = ${o}`);
@@ -70,7 +70,7 @@ const winner = function(win){
 const reset = function(){
   Object.keys(flag).forEach(function(key){ flag[key] = true });
   $(".restart").css("width", "0%");
-  $(".restart").css("margin", "300px auto");
+  $(".restart").css("margin", "50px auto");
   $(".finish").text("");
   $(".finish").css("fontSize", "2px");
   $(".box").css('background-image', 'url()');
@@ -79,4 +79,10 @@ const reset = function(){
   turn = 0;
 }
 
+const xAvatar = function(){
+  //$(".x1").css("border", "3px solid red");
+  console.log("Clicked");
+}
+
 $(".restart").click(reset);
+$(".x1").click(xAvatar);
