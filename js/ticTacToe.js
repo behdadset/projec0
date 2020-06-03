@@ -15,6 +15,10 @@ if (localStorage.getItem("o") != "null"){
   $(".playerO").text(`Player O = ${o}`);
 }
 
+if( o != 0 || x != 0){
+  $(".resetScore").css("visibility", "visible");
+}
+
 const myFunction = function(box){
   if (flag[`${box}`]){
     if (turn === 0){
@@ -63,7 +67,7 @@ const winner = function(win){
     
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     x++;
-    // Store
+    // Store locally
     localStorage.setItem("x", x);
     $(".playerX").text(`Player X = ${x}`);
     
@@ -75,7 +79,7 @@ const winner = function(win){
     
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     o++;
-    // Store
+    // Store locally
     localStorage.setItem("o", o);
     $(".playerO").text(`Player O = ${o}`);
   }
@@ -120,8 +124,20 @@ const start = function () {
   console.log("Working")
 }
 
+const resetScore = function(){
+  localStorage.setItem("x", 0);
+  localStorage.setItem("o", 0);
+  x = 0;
+  o = 0;
+  $(".playerX").text(`Player X = 0`);
+  $(".playerO").text(`Player O = 0`);
+  $(".resetScore").css("opacity", "0");
+  console.log(x);
+}
+
 $(".start").click(start);
 $(".restart").click(reset);
+$(".resetScore").click(resetScore);
 
 $(".x1").click({xNum: "x1"}, xAvatar);
 $(".x2").click({xNum: "x2"}, xAvatar);

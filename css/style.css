@@ -83,6 +83,14 @@ body {
     margin-left: 40%;
     width: 20%;
 }
+.resetScore{
+    position: absolute;
+    margin-top: -500px;
+    transition: all 0.4s;
+    margin-left: 450px;
+    width: 180px;
+    visibility: hidden;
+}
   
 .wrapper {
     display: inline-grid;
