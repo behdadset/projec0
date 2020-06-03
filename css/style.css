@@ -5,7 +5,10 @@ body {
   }
 
 .headerImage{
-    position: absolute;
+    display: absolute;
+    visibility: hidden;
+    
+    padding-top: 100px;
     width: 200px;
     margin: -50px 43%;
 }
@@ -17,7 +20,9 @@ body {
 }
 
 .playerX{
-    display: absolute;
+    position: absolute;
+    visibility: hidden;
+    
     margin-top: 0;
     padding-top: 50px;
     margin-left: 20%;
@@ -35,6 +40,7 @@ body {
 }
 
 .avatarX{
+    
     display: inline-grid;
     grid-template-rows: 150px 150px 150px;
     grid-template-columns: 150px ;
@@ -43,6 +49,16 @@ body {
 }
 
 .playerO{
+    position: absolute;
+    visibility: hidden;
+    margin-top: -10px;
+    
+    margin-left: 70%;
+    color: white;
+    text-shadow: 1px 1px lightgray;
+}
+
+.playerOmain{
     display: absolute;
     margin-top: -100px;
     padding-top: 50px;
@@ -51,21 +67,13 @@ body {
     text-shadow: 1px 1px lightgray;
 }
 
-.playerOmain{
-    display: absolute;
-    margin-top: -550px;
-    padding-top: 50px;
-    margin-left: 70%;
-    color: white;
-    text-shadow: 1px 1px lightgray;
-}
-
 .avatarO{
-    display: inline-grid;
+    display: grid;
     grid-template-rows: 150px 150px 150px;
     grid-template-columns: 150px ;
     grid-gap: 3px;
     margin-left: 780px;
+    margin-top: -450px;
 }
 
 .start{
@@ -118,7 +126,7 @@ nav{
     
 }
 
-.container{
+.container, .container1{
     width: 1080px;
     margin: 0 auto;
     background-image: url(../images/background.jpg);
@@ -129,6 +137,10 @@ nav{
     height: 850px;
 }
 
+.container{
+    display: none;
+}
+
 .restart{
     display: block;
     margin: 50px auto;
@@ -137,20 +149,22 @@ nav{
 }
 
 .x1{
-    background-image: url(../images/x.png);
-    
+    background-image: url(../images/x1.png);
+    border: 4px solid red;
 }
+
 
 .x2{
     background-image: url(../images/x2.png);
 }
 
 .x3{
-    background-image: url(../images/xMen.png);
+    background-image: url(../images/x3.png);
 }
 
 .o1{
-    background-image: url(../images/o.png);
+    background-image: url(../images/o1.png);
+    border: 4px solid red;
 }
 
 .o2{
@@ -158,5 +172,5 @@ nav{
 }
 
 .o3{
-    background-image: url(../images/donut.png);
+    background-image: url(../images/o3.png);
 }

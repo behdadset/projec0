@@ -4,16 +4,18 @@ let turn = 0;
 let flag = {a:true, b:true, c:true, d:true, e:true, f:true, g:true, h:true, i:true};
 let x = 0;
 let o = 0;
+let xBack ="images/x1.png"
+let oBack = "images/o1.png"
 
 const myFunction = function(box){
   if (flag[`${box}`]){
     if (turn === 0){
-      $(`.${box}`).css('background-image', 'url("images/x2.png")');
+      $(`.${box}`).css('background-image', "url(" + xBack + ")");
       turn = 1;
       boxes[`${box}`] = "1";
 
     } else {
-      $(`.${box}`).css('background-image', 'url("images/donut.png")');
+      $(`.${box}`).css('background-image', "url(" + oBack + ")");
       turn = 0;
       boxes[`${box}`] = "2";
     }
@@ -79,10 +81,40 @@ const reset = function(){
   turn = 0;
 }
 
-const xAvatar = function(){
-  //$(".x1").css("border", "3px solid red");
-  console.log("Clicked");
+const xAvatar = function(xNumber){
+  const x = xNumber.data.xNum;
+  $(".x").css("border", "2px solid black");
+  $(`.${x}`).css("border", "4px solid red");
+  xBack = `images/${x}.png`;
+  console.log(xBack);
 }
 
+const oAvatar = function(oNumber){
+  const o = oNumber.data.oNum;
+  $(".o").css("border", "2px solid black");
+  $(`.${o}`).css("border", "4px solid red");
+  oBack = `images/${o}.png`
+  console.log(oBack);
+}
+
+const start = function () {
+  $(".container1").css("display", "none");
+  $(".start").css("display", "none");
+  $(".headerImage").css("visibility", "visible");
+  $(".playerX").css("visibility", "visible");
+  $(".playerO").css("visibility", "visible");
+  $(".container").css("display", "block");
+  
+  console.log("Working")
+}
+
+$(".start").click(start);
 $(".restart").click(reset);
-$(".x1").click(xAvatar);
+
+$(".x1").click({xNum: "x1"}, xAvatar);
+$(".x2").click({xNum: "x2"}, xAvatar);
+$(".x3").click({xNum: "x3"}, xAvatar);
+
+$(".o1").click({oNum: "o1"}, oAvatar);
+$(".o2").click({oNum: "o2"}, oAvatar);
+$(".o3").click({oNum: "o3"}, oAvatar);
