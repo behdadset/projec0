@@ -6,6 +6,14 @@ let x = 0;
 let o = 0;
 let xBack ="images/x1.png"
 let oBack = "images/o1.png"
+if (localStorage.getItem("x") != "undefined"){
+   x = localStorage.getItem("x");
+   $(".playerX").text(`Player X = ${x}`);
+}
+if (localStorage.getItem("o") != "undefined"){
+  o = localStorage.getItem("o");
+  $(".playerO").text(`Player O = ${o}`);
+}
 
 const myFunction = function(box){
   if (flag[`${box}`]){
@@ -55,6 +63,8 @@ const winner = function(win){
     
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     x++;
+    // Store
+    localStorage.setItem("x", x);
     $(".playerX").text(`Player X = ${x}`);
     
   } 
@@ -65,6 +75,8 @@ const winner = function(win){
     
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     o++;
+    // Store
+    localStorage.setItem("o", o);
     $(".playerO").text(`Player O = ${o}`);
   }
 }
