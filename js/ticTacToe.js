@@ -1,7 +1,7 @@
-let boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
+let boxes = ["3", "4", "5", "6", "7", "8", "9", "10", "11"];
 let counterDraw = 0;
 let turn = 0;
-let flag = {a:true, b:true, c:true, d:true, e:true, f:true, g:true, h:true, i:true};
+let flag = [true, true, true, true, true, true, true, true, true];
 let x = localStorage.getItem("x");
 let o = localStorage.getItem("o");
 let xBack ="images/x1.png"
@@ -21,49 +21,8 @@ const resetScorBtn = function(){
   }
 }
 
-
-const myFunction = function(box){
-  if (flag[`${box}`]){
-    if (turn === 0){
-      $(`.${box}`).css('background-image', "url(" + xBack + ")");
-      turn = 1;
-      boxes[`${box}`] = "1";
-
-    } else {
-      $(`.${box}`).css('background-image', "url(" + oBack + ")");
-      turn = 0;
-      boxes[`${box}`] = "2";
-    }
-    if (boxes.a === boxes.b && boxes.a === boxes.c ||
-      boxes.a === boxes.d && boxes.a === boxes.g 
-      ){
-        winner(boxes["a"]);
-    } else if (boxes.d === boxes.e && boxes.d === boxes.f ||
-      boxes.b === boxes.e && boxes.b === boxes.h ||
-      boxes.a === boxes.e && boxes.a === boxes.i ||
-      boxes.c === boxes.e && boxes.c === boxes.g 
-      ){
-      winner (boxes["e"]);
-    } else if (boxes.g === boxes.h && boxes.g === boxes.i){
-      winner (boxes["g"]);
-    } else if (boxes.c === boxes.f && boxes.c === boxes.i){
-      winner (boxes["c"]);
-    } else {
-      counterDraw++;
-      if(counterDraw === 9 ){
-        $(".finish").text("DRAW!");
-        $(".finish").css("fontSize", "60px");
-        $(".restart").css("width", "10%");
-        $(".restart").css("visibility", "visible");
-      }
-      
-    }
-    flag[`${box}`] = false;
-  }
-}
-
 const winner = function(win){
-  if (win === "1"){
+  if (win === "0"){
     $(".finish").text("Player X is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
@@ -75,7 +34,7 @@ const winner = function(win){
     $(".playerX").text(`Player X = ${x}`);
     
   } 
-  if (win === "2"){
+  if (win === "1"){
     $(".finish").text("Player O is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
@@ -88,6 +47,32 @@ const winner = function(win){
   }
 }
 
+const winning = function(newBox, player){
+  if (newBox[0] === newBox[1] && newBox[0] === newBox[2] ||
+    newBox[0] === newBox[3] && newBox[0] === newBox[6] ||
+    newBox[3] === newBox[4] && newBox[4] === newBox[5] ||
+    newBox[1] === newBox[4] && newBox[1] === newBox[7] ||
+    newBox[0] === newBox[4] && newBox[0] === newBox[8] ||
+    newBox[2] === newBox[4] && newBox[2] === newBox[6] ||
+    newBox[6] === newBox[7] && newBox[6] === newBox[8] ||
+    newBox[2] === newBox[5] && newBox[2] === newBox[8]){
+      winner (player);
+  } else {
+    counterDraw++;
+    if(counterDraw === 9 ){
+      $(".finish").text("DRAW!");
+      $(".finish").css("fontSize", "60px");
+      $(".restart").css("width", "10%");
+      $(".restart").css("visibility", "visible");
+    }
+    
+  }
+  
+}
+
+
+
+
 const reset = function(){
   Object.keys(flag).forEach(function(key){ flag[key] = true });
   $(".restart").css("width", "0%");
@@ -95,7 +80,7 @@ const reset = function(){
   $(".finish").text("");
   $(".finish").css("fontSize", "2px");
   $(".box").css('background-image', 'url()');
-  boxes = {a:"3", b:"4", c:"5", d:"6", e:"7", f:"8", g:"9", h:"10", i:"11"};
+  boxes = ["3", "4", "5", "6", "7", "8", "9", "10", "11"];
   counterDraw = 0;
   turn = 0;
 }
@@ -147,6 +132,31 @@ const resetScore = function(){
   $(".playerX").text(`Player X = 0`);
   $(".playerO").text(`Player O = 0`);
   $(".resetScore").css("visibility", "hidden");
+}
+
+const myFunction = function(id){
+    if (flag[id]){
+      if (turn === 0){
+        $(`#${id}`).css('background-image', "url(" + xBack + ")");
+        turn = 1;
+        boxes[`${id}`] = "1";
+        winning(boxes, "0");
+      } else {
+        
+        $(`#${id}`).css('background-image', "url(" + oBack + ")");
+        turn = 0;
+        boxes[`${id}`] = "2";
+        winning(boxes, "1");
+      }
+      flag[id] = false;
+  let empty = [];
+    for(let i = 0; i < flag.length; i++){
+      if (flag[i] === true){
+        empty.push(i)
+      }
+    }
+    console.log(empty);
+  }
 }
 
 resetScorBtn();
