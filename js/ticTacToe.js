@@ -6,16 +6,21 @@ let x = localStorage.getItem("x");
 let o = localStorage.getItem("o");
 let xBack ="images/x1.png"
 let oBack = "images/o1.png"
-if ( x != "null"){
+if ( x != null){
    $(".playerX").text(`Player X = ${x}`);
 }
-if ( o != "null"){
+if ( o != null){
   $(".playerO").text(`Player O = ${o}`);
 }
 
-if( o != 0 || x != 0){
-  $(".resetScore").css("visibility", "visible");
+
+
+const resetScorBtn = function(){
+  if( o != 0 || x != 0){
+    $(".resetScore").css("visibility", "visible");
+  }
 }
+
 
 const myFunction = function(box){
   if (flag[`${box}`]){
@@ -49,7 +54,7 @@ const myFunction = function(box){
         $(".finish").text("DRAW!");
         $(".finish").css("fontSize", "60px");
         $(".restart").css("width", "10%");
-        
+        $(".restart").css("visibility", "visible");
       }
       
     }
@@ -62,7 +67,7 @@ const winner = function(win){
     $(".finish").text("Player X is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
-    
+    $(".restart").css("visibility", "visible");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     x++;
     // Store locally
@@ -74,7 +79,7 @@ const winner = function(win){
     $(".finish").text("Player O is the winner.");
     $(".finish").css("fontSize", "60px");
     $(".restart").css("width", "10%");
-    
+    $(".restart").css("visibility", "visible");
     Object.keys(flag).forEach(function(key){ flag[key] = false });
     o++;
     // Store locally
@@ -113,13 +118,25 @@ const oAvatar = function(oNumber){
 
 const start = function () {
   $(".container1").css("display", "none");
-  $(".start").css("display", "none");
+  $(".start").css("visibility", "hidden");
   $(".headerImage").css("visibility", "visible");
   $(".playerX").css("visibility", "visible");
   $(".playerO").css("visibility", "visible");
   $(".container").css("display", "block");
+  $(".exit").css("display", "fixed");
   
-  console.log("Working")
+}
+
+const exit = function () {
+  $(".container1").css("display", "block");
+  $(".start").css("visibility", "visible");
+  $(".headerImage").css("visibility", "hidden");
+  $(".playerX").css("visibility", "hidden");
+  $(".playerO").css("visibility", "hidden");
+  $(".container").css("display", "none");
+  $(".restart").css("visibility", "hidden");
+  reset();
+  resetScorBtn();
 }
 
 const resetScore = function(){
@@ -129,13 +146,15 @@ const resetScore = function(){
   o = 0;
   $(".playerX").text(`Player X = 0`);
   $(".playerO").text(`Player O = 0`);
-  $(".resetScore").css("opacity", "0");
-  console.log(x);
+  $(".resetScore").css("visibility", "hidden");
 }
+
+resetScorBtn();
 
 $(".start").click(start);
 $(".restart").click(reset);
 $(".resetScore").click(resetScore);
+$(".exit").click(exit);
 
 $(".x1").click({xNum: "x1"}, xAvatar);
 $(".x2").click({xNum: "x2"}, xAvatar);

@@ -79,31 +79,30 @@ body {
 .start{
     display: absolute;
     margin-top: -550px;
-    
     margin-left: 40%;
     width: 20%;
 }
 .resetScore{
     position: absolute;
     margin-top: -500px;
-    transition: all 0.4s;
+    visibility: hidden;
     margin-left: 450px;
     width: 180px;
-    visibility: hidden;
+    
 }
   
 .wrapper {
     display: inline-grid;
-    grid-template-rows: 200px 200px 200px;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 180px 180px 180px;
+    grid-template-columns: 180px 180px 180px;
     grid-gap: 3px;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-top: 50px;
     box-shadow: 0 80px 60px 0px black;
     border-radius: 5px;
 }
 
-.box {
+.box, .avatar {
     background-color: lightgray;
     background-position: center;
     background-repeat: no-repeat;
@@ -153,7 +152,18 @@ nav{
     display: block;
     margin: 50px auto;
     width: 0%;
-    transition: all 1s;
+    transition:width 1s;
+}
+
+.button:hover{
+    transform: scale(1.1);
+}
+
+.exit{
+    position: absolute;
+    margin-left: -350px;
+    margin-top: 650px;
+    width: 150px;
 }
 
 .x1{
