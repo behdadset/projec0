@@ -1,11 +1,15 @@
-let boxes = ["3", "4", "5", "6", "7", "8", "9", "10", "11"];
-let counterDraw = 0;
-let turn = 0;
-let flag = [true, true, true, true, true, true, true, true, true];
-let x = localStorage.getItem("x");
+//Variables
+let boxes = ["3", "4", "5", "6", "7", "8", "9", "10", "11"]; //If its X will be 1 if O will be 2
+let counterDraw = 0; // If its 9 the game is draw
+let turn = "0"; // if its 0 its player X turn if its 1 its player O turn.
+let flag = [true, true, true, true, true, true, true, true, true]; //Check if it is empty
+let x = localStorage.getItem("x"); //Read from local storage
 let o = localStorage.getItem("o");
-let xBack ="images/x1.png"
+let xBack ="images/x1.png" //Preferred avatars 
 let oBack = "images/o1.png"
+let opponent = "" // Play with computer
+
+//Get from local storage
 if ( x != null){
    $(".playerX").text(`Player X = ${x}`);
 }
@@ -13,14 +17,14 @@ if ( o != null){
   $(".playerO").text(`Player O = ${o}`);
 }
 
-
-
+//Showing Reset Score button
 const resetScorBtn = function(){
   if( o != 0 || x != 0){
     $(".resetScore").css("visibility", "visible");
   }
 }
 
+//Showing the winner notification and reset button.
 const winner = function(win){
   if (win === "0"){
     $(".finish").text("Player X is the winner.");
@@ -31,8 +35,7 @@ const winner = function(win){
     x++;
     // Store locally
     localStorage.setItem("x", x);
-    $(".playerX").text(`Player X = ${x}`);
-    
+    $(".playerX").text(`Player X = ${x}`);  
   } 
   if (win === "1"){
     $(".finish").text("Player O is the winner.");
@@ -47,6 +50,7 @@ const winner = function(win){
   }
 }
 
+//Evaluating the winning or draw situation
 const winning = function(newBox, player){
   if (newBox[0] === newBox[1] && newBox[0] === newBox[2] ||
     newBox[0] === newBox[3] && newBox[0] === newBox[6] ||
@@ -64,15 +68,29 @@ const winning = function(newBox, player){
       $(".finish").css("fontSize", "60px");
       $(".restart").css("width", "10%");
       $(".restart").css("visibility", "visible");
-    }
-    
+    } 
   }
-  
 }
 
+//Checking empty spaces on the table
+const checkEmpty = function(){
+  let empty = [];
+      for(let i = 0; i < flag.length; i++){
+        if (flag[i] === true){
+          empty.push(i);
+        }
+      }
+      return empty;
+}
 
+//Choosing Id for Computer opponent
+const getId = function (){
+  const rId = checkEmpty();
+  const outId = rId[Math.floor(Math.random() * rId.length)];
+  return outId;
+}
 
-
+//Reset the table and continue the game
 const reset = function(){
   Object.keys(flag).forEach(function(key){ flag[key] = true });
   $(".restart").css("width", "0%");
@@ -82,15 +100,15 @@ const reset = function(){
   $(".box").css('background-image', 'url()');
   boxes = ["3", "4", "5", "6", "7", "8", "9", "10", "11"];
   counterDraw = 0;
-  turn = 0;
+  turn = "0";
 }
 
+//Choosing avatars for players
 const xAvatar = function(xNumber){
   const x = xNumber.data.xNum;
   $(".x").css("border", "2px solid black");
   $(`.${x}`).css("border", "4px solid red");
   xBack = `images/${x}.png`;
-  console.log(xBack);
 }
 
 const oAvatar = function(oNumber){
@@ -98,9 +116,9 @@ const oAvatar = function(oNumber){
   $(".o").css("border", "2px solid black");
   $(`.${o}`).css("border", "4px solid red");
   oBack = `images/${o}.png`
-  console.log(oBack);
 }
 
+//Start button
 const start = function () {
   $(".container1").css("display", "none");
   $(".start").css("visibility", "hidden");
@@ -109,9 +127,10 @@ const start = function () {
   $(".playerO").css("visibility", "visible");
   $(".container").css("display", "block");
   $(".exit").css("display", "fixed");
-  
+  turn = "0";
 }
 
+//Exit button
 const exit = function () {
   $(".container1").css("display", "block");
   $(".start").css("visibility", "visible");
@@ -124,6 +143,7 @@ const exit = function () {
   resetScorBtn();
 }
 
+//Reset score button
 const resetScore = function(){
   localStorage.setItem("x", 0);
   localStorage.setItem("o", 0);
@@ -134,33 +154,31 @@ const resetScore = function(){
   $(".resetScore").css("visibility", "hidden");
 }
 
+// Game Function
 const myFunction = function(id){
     if (flag[id]){
-      if (turn === 0){
+      if (turn === "0"){
         $(`#${id}`).css('background-image', "url(" + xBack + ")");
-        turn = 1;
+        turn = "1";
         boxes[`${id}`] = "1";
         winning(boxes, "0");
-      } else {
-        
+        if (opponent === "computer"){
+          const newId = getId();
+          myFunction(newId);
+        }
+      } else{
         $(`#${id}`).css('background-image', "url(" + oBack + ")");
-        turn = 0;
+        turn = "0";
         boxes[`${id}`] = "2";
         winning(boxes, "1");
       }
       flag[id] = false;
-  let empty = [];
-    for(let i = 0; i < flag.length; i++){
-      if (flag[i] === true){
-        empty.push(i)
-      }
-    }
-    console.log(empty);
   }
 }
 
 resetScorBtn();
 
+//Action listeners
 $(".start").click(start);
 $(".restart").click(reset);
 $(".resetScore").click(resetScore);
