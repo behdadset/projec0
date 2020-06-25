@@ -1,5 +1,9 @@
 # TIC TAC TOE
 
+
+## Link of the game.
+Here is a link to the game: [Tic tac toe](https://behdadset.github.io/project0/).
+
 ![tictactoe](images/tic-tac-toe.gif)
 
 Here you can see some functionalities that I used in this game.
@@ -37,9 +41,6 @@ Here you can see some functionalities that I used in this game.
 ## Next Versions
 in the next version of the game I will add network multiplayer and an unbeatible AI opponent.
 
-
-## Link of the game.
-Here is a link to the game: [Tic tac toe](https://behdadset.github.io/project0/).
 
 
 ## Contact information.

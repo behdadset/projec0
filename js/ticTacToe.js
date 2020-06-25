@@ -51,7 +51,7 @@ const winner = function(win){
 }
 
 //Evaluating the winning or draw situation
-const winning = function(newBox, player){
+const winning = function(newBox){
   if (newBox[0] === newBox[1] && newBox[0] === newBox[2] ||
     newBox[0] === newBox[3] && newBox[0] === newBox[6] ||
     newBox[3] === newBox[4] && newBox[4] === newBox[5] ||
@@ -60,15 +60,9 @@ const winning = function(newBox, player){
     newBox[2] === newBox[4] && newBox[2] === newBox[6] ||
     newBox[6] === newBox[7] && newBox[6] === newBox[8] ||
     newBox[2] === newBox[5] && newBox[2] === newBox[8]){
-      winner (player);
+      return true;
   } else {
-    counterDraw++;
-    if(counterDraw === 9 ){
-      $(".finish").text("DRAW!");
-      $(".finish").css("fontSize", "60px");
-      $(".restart").css("width", "10%");
-      $(".restart").css("visibility", "visible");
-    } 
+    return false;
   }
 }
 
@@ -130,6 +124,16 @@ const start = function () {
   turn = "0";
 }
 
+const drawCheck = function(){
+  counterDraw++;
+  if(counterDraw === 9 ){
+    $(".finish").text("DRAW!");
+    $(".finish").css("fontSize", "60px");
+    $(".restart").css("width", "10%");
+    $(".restart").css("visibility", "visible");
+  } 
+}
+
 //Exit button
 const exit = function () {
   $(".container1").css("display", "block");
@@ -161,7 +165,12 @@ const myFunction = function(id){
         $(`#${id}`).css('background-image', "url(" + xBack + ")");
         turn = "1";
         boxes[`${id}`] = "1";
-        winning(boxes, "0");
+        if (winning(boxes)){
+          winner ("0");
+        } else {
+          drawCheck(); 
+        }
+        flag[id] = false;
         if (opponent === "computer"){
           const newId = getId();
           myFunction(newId);
@@ -170,9 +179,14 @@ const myFunction = function(id){
         $(`#${id}`).css('background-image', "url(" + oBack + ")");
         turn = "0";
         boxes[`${id}`] = "2";
-        winning(boxes, "1");
+        if (winning(boxes)){
+          winner ("1");
+        } else {
+          drawCheck();
+        }
+        flag[id] = false;
       }
-      flag[id] = false;
+      
   }
 }
 
